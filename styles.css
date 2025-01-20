@@ -1,0 +1,1271 @@
+/* Incluir fuente personalizada */
+@font-face {
+    font-family: 'Cy Grotesk Grand';
+    src: url('fonts/Cy Grotesk Font.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    position: sticky; /* Cambiado de relative a sticky */
+    top: 0;  /* Se pegará a la parte superior de la pantalla */
+    background: linear-gradient(to top, rgba(255, 255, 255, 0), white); /* Degradado de transparente a blanco hacia arriba */
+    z-index: 100;  /* Asegura que esté encima de otros elementos */
+}
+
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .brand {
+    font-family: 'Cy Grotesk Grand', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Links de navegación */
+.nav-links {
+    display: flex;
+    gap: 20px;
+    white-space: nowrap;
+}
+
+.nav-links a {
+    font-weight: 400;
+    font-size: 18px;
+    color: #000;
+    display: block;
+    transition: color 0.3s, font-weight 0.3s;
+}
+
+.nav-links a:hover {
+    color: #555;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* Botón hamburguesa */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 100;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: #000;
+}
+
+/* Media queries para responsividad */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        height: 100vh;
+        padding: 80px 0;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        z-index: 90;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links a {
+        margin: 1.5rem 0;
+        font-size: 18px;
+    }
+
+    /* Animación del botón hamburguesa */
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .logo img {
+        width: 35%; /* Ajusta el tamaño del logo en móviles */
+    }
+}
+
+/* Ajustes adicionales para pantallas muy pequeñas */
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .logo img {
+        width: 45%; /* Logo más grande en pantallas muy pequeñas */
+    }
+}
+
+
+/*robot    */
+
+.robot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99999;
+    width: 80px;
+    height: 80px;
+    transition: all 0.3s ease; /* Suave transición al cambiar de posición */
+}
+
+.whatsapp-robot {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.whatsapp-robot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: robotFloat 3s ease-in-out infinite;
+}
+
+@keyframes robotFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Cambio a la izquierda en pantallas pequeñas */
+@media screen and (max-width: 520px) {
+    .robot-container {
+        left: auto; /* Removemos el posicionamiento derecho */
+        right: 10px; /* Movemos a la izquierda */
+        width: 60px;
+        height: 60px;
+        bottom: 15px;
+    }
+}
+
+/* Ajuste adicional para pantallas muy pequeñas */
+@media screen and (max-width: 360px) {
+    .robot-container {
+        left: 15px;
+        bottom: 10px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+
+
+/* Footer */
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 20px;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #888;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 10px;
+    transition: transform 0.3s;
+}
+
+.social-links i {
+    font-size: 1.5rem;
+    color: #fff;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-links a:hover i {
+    color: #888;
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    border-top: 1px solid #333;
+    padding-top: 10px;
+}
+
+/* Responsiveness for smaller devices */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .social-links a {
+        margin-right: 15px; /* Adjust spacing between icons */
+    }
+
+    .footer-section ul li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .footer-section ul li {
+        font-size: 0.9rem;
+    }
+
+    .social-links i {
+        font-size: 1.2rem; /* Slightly smaller icons for very small screens */
+    }
+
+    .footer-bottom {
+        font-size: 0.7rem;
+    }
+}
+
+
+
+
+
+/* Index */
+.landing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+}
+
+.content {
+    max-width: 50%;
+    margin-left: 100px;
+}
+
+.content h1 {
+    font-family: 'Cy Grotesk Grand', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.content .world-logo {
+    font-weight: bold;
+    font-size: 3.2rem;
+    color: #000;
+}
+
+.content p {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: 2px solid #000;
+    border-radius: 30px;
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.image {
+    position: relative;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    margin-right: 100px;
+    animation: floatUp 3s ease-in-out forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Tabletas */
+@media (max-width: 1024px) {
+    .landing {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .content {
+        max-width: 80%;
+        margin-left: 0;
+        margin-bottom: 30px;
+    }
+
+    .content h1 {
+        font-size: 2.5rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    .image img {
+        margin-right: 0;
+        max-width: 90%;
+    }
+}
+
+/* Teléfonos */
+@media (max-width: 768px) {
+    .landing {
+        padding: 20px;
+    }
+
+    .content h1 {
+        font-size: 2rem;
+    }
+
+    .content p {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 0.8rem;
+        padding: 6px 14px;
+    }
+
+    .image img {
+        max-width: 70%; 
+        height: auto;   
+    }
+}
+
+/* Teléfonos muy pequeños */
+@media (max-width: 480px) {
+    .content h1 {
+        font-size: 1.8rem;
+    }
+
+    .content p {
+        font-size: 0.8rem;
+    }
+
+    .btn {
+        font-size: 0.7rem;
+        padding: 5px 12px;
+    }
+
+    .image img {
+        max-width: 60%; 
+        height: auto; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* World Section */
+.world-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.question-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.question-block.reverse {
+    flex-direction: row-reverse;
+}
+
+.question-block .text {
+    flex: 1;
+    padding: 20px;
+}
+
+.question-block .text h2 {
+    font-family: 'Cy Grotesk Grand', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.question-block .text p {
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.question-block .image {
+    flex: 1;
+    text-align: center;
+}
+
+.question-block .image img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Para pantallas medianas (tabletas) */
+@media (max-width: 1024px) {
+    .world-section {
+        padding: 20px; /* Reduce el padding general */
+    }
+
+    .question-block {
+        margin-bottom: 30px; /* Reduce espacio entre bloques */
+    }
+
+    .question-block .text h2 {
+        font-size: 1.8rem; /* Disminuye ligeramente el tamaño de título */
+    }
+
+    .question-block .text p {
+        font-size: 1.3rem; /* Ajusta el texto para una mejor lectura */
+    }
+
+    .question-block .image img {
+        max-width: 90%; /* Amplía un poco el tamaño de las imágenes */
+    }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .question-block {
+        flex-direction: column; /* Cambia a diseño vertical */
+        text-align: center; /* Centra todo el contenido */
+    }
+
+    .question-block.reverse {
+        flex-direction: column; /* Aplica diseño vertical para "reverse" */
+    }
+
+    .question-block .text {
+        padding: 10px; /* Reduce padding interno */
+    }
+
+    .question-block .text h2 {
+        font-size: 1.5rem; /* Ajusta tamaño de los títulos */
+        margin-bottom: 10px;
+    }
+
+    .question-block .text p {
+        font-size: 1.2rem; /* Texto más pequeño */
+        line-height: 1.5;
+    }
+
+    .question-block .image img {
+        max-width: 100%; /* Asegura que las imágenes ocupen todo el ancho disponible */
+        margin-top: 10px;
+    }
+}
+
+/* Para pantallas extra pequeñas (teléfonos muy pequeños) */
+@media (max-width: 480px) {
+    .question-block .text h2 {
+        font-size: 1.3rem; /* Reduce aún más los títulos */
+    }
+
+    .question-block .text p {
+        font-size: 1rem; /* Texto más pequeño */
+    }
+
+    .question-block .image img {
+        max-width: 100%; /* Imágenes ocupan todo el ancho */
+    }
+}
+
+
+
+
+
+
+
+
+/* General Styles for World App Section */
+.world-app-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.world-app-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Image Container */
+.image-container {
+    flex: 1;
+    max-width: 400px;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+/* Content */
+.content {
+    flex: 2;
+    text-align: left;
+}
+
+.content h2 {
+    font-family: 'Cy Grotesk Grand', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.content p {
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Download Links */
+.download-links {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.download-links a {
+    display: inline-block;
+    transition: filter 0.3s ease;
+}
+
+.download-links a:hover {
+    filter: brightness(0.8);
+}
+
+.download-links img {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .world-app-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .image-container {
+        max-width: 100%;
+    }
+
+    .content h2 {
+        font-size: 1.8rem;
+    }
+
+    .content p {
+        font-size: 1.3rem;
+    }
+
+    .download-links img {
+        width: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .world-app-container {
+        gap: 15px;
+    }
+
+    .content h2 {
+        font-size: 1.6rem;
+    }
+
+    .content p {
+        font-size: 1.2rem;
+    }
+
+    .download-links img {
+        width: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content h2 {
+        font-size: 1.4rem;
+    }
+
+    .content p {
+        font-size: 1rem;
+    }
+
+    .download-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .download-links img {
+        width: 150px;
+    }
+}
+
+
+
+
+/* Beneficios Section */
+.benefits-section {
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    max-width: 90%; /* Responsivo */
+}
+
+.benefits-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.benefits-content {
+    text-align: center;
+}
+
+.benefits-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.benefits-list {
+    list-style: decimal;
+    padding-left: 20px;
+    text-align: left;
+    max-width: 50%;
+    text-align: center;
+    margin: 0 auto;    
+}
+
+.benefits-list li {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #444;
+    line-height: 1.6;
+}
+
+.benefit-title {
+    font-weight: bold;
+    color: #000;
+    font-size: 22px;
+}
+
+.additional-content {
+    text-align: center;
+}
+
+.additional-content h3 {
+    font-size: 40px;
+    color: #000;
+}
+
+.additional-content p {
+    font-size: 60px;
+    font-weight: bold;
+    color: #000;
+}
+
+.additional-content span {
+    font-size: 18px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .benefits-section h2 {
+        font-size: 28px;
+    }
+
+    .benefits-list li {
+        font-size: 18px;
+    }
+
+    .additional-content h3 {
+        font-size: 24px;
+    }
+
+    .additional-content p {
+        font-size: 20px;
+    }
+
+    .additional-content span {
+        font-size: 16px;
+    }
+}
+
+
+
+
+
+/* How to Register Section */
+.register-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.register-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.register-content h2 {
+    font-family: 'Cy Grotesk Grand', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.register-content ol {
+    list-style: decimal;
+    padding-left: 20px;
+}
+
+.register-content li {
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.register-content button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: 2px solid #000;
+    border-radius: 30px;
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.register-content button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.register-content em {
+    font-size: 16px;
+    color: #666;
+}
+
+.robot-image {
+    flex: 1;
+    max-width: 30%;
+    animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .register-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .register-content {
+        max-width: 100%;
+    }
+
+    .robot-image {
+        max-width: 60%;
+    }
+
+    .register-content li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .register-content button {
+        margin: 10px 0 0;
+        width: 100%;
+    }
+}
+
+
+
+
+/* orbpoints section */
+.orbpoints-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.orbpoints-section h2 {
+    font-family: 'Cy Grotesk Grand', sans-serif;
+    font-size: 2rem;
+}
+
+.orbpoints-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Card Styles */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-content h3 {
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: 2px solid #000;
+    border-radius: 30px;
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    z-index: 1000;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+/* Contenido del modal */
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%; /* Respuesta móvil */
+    text-align: left;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.modal-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.modal-info {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.modal-info li {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.maps-link {
+    color: #007BFF;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.maps-link:hover {
+    text-decoration: underline;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+
+/* Contanto mas información */
+.contact-form-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.form-content {
+    flex: 1;
+    max-width: 60%;
+    text-align: left;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.form-content h2 {
+    font-family: 'Cy Grotesk Grand', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.form-content p {
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input, .form-group textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.form-submit {
+    display: flex;
+    justify-content: center;
+}
+
+.form-submit button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: 2px solid #000;
+    border-radius: 15px;
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.form-submit button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .contact-form-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .form-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .form-content p {
+        font-size: 1.3rem;
+    }
+
+    .form-submit button {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-content {
+        padding: 20px;
+    }
+
+    .form-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .form-content p {
+        font-size: 1.2rem;
+    }
+
+    .form-group input, .form-group textarea {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .form-content p {
+        font-size: 1rem;
+    }
+
+    .form-submit button {
+        width: 100%;
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
+/* preguntas frecuentes */
+
+.faq-section {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-section h1 {
+    font-family: 'Cy Grotesk Grand', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.accordion {
+    margin-top: 20px;
+    border: 0px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #ddd;
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+.accordion-header {
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: #f1f1f1;
+}
+
+.accordion-content {
+    padding: 15px;
+    font-size: 1rem;
+    display: none;
+    background: #ffffff;
+}
