@@ -304,100 +304,107 @@
                 title: "Chimbote",
                 locations: ["21 de abril"],
                 maps: "https://www.google.com/maps?q=Chimbote",
-                video: "https://www.instagram.com/crypnita.pe/reel/DDknJgKsYN2/" // Agrega el ID del video de YouTube
+                video: "https://www.facebook.com/plugins/video.php?href=https://web.facebook.com/reel/506773125716552"
             },
             nuevo_chimbote: {
                 title: "Nuevo Chimbote",
                 locations: ["Óvalo la familia"],
                 maps: "https://www.google.com/maps?q=Nuevo+Chimbote",
-                video: "https://www.youtube.com/watch?v=TltXlKdBN0M" // Agrega el ID del video de YouTube
+                video: "https://www.facebook.com/plugins/video.php?href=https://web.facebook.com/reel/1122962406112238"
             },
             chao: {
                 title: "Chao",
                 locations: ["A media cuadra del Polideportivo Alberto Fujimori."],
                 maps: "https://www.google.com/maps?q=Chao",
-                video: "https://web.facebook.com/reel/572199955698897" // Agrega el ID del video de YouTube
+                video: "https://www.facebook.com/plugins/video.php?href=https://web.facebook.com/reel/572199955698897"
             },
             viru: {
                 title: "Viru",
                 locations: ["A espaldas de la caja Trujillo (plaza de Armas de Virú)"],
                 maps: "https://www.google.com/maps?q=Viru",
-                video: "https://www.youtube.com/embed/VIDEO_ID_VIRU" // Agrega el ID del video de YouTube
+                video: "https://www.facebook.com/plugins/video.php?href=https://web.facebook.com/reel/9486293271394233"
             },
             piura: {
                 title: "Piura",
                 locations: ["Distrito de Castilla"],
                 maps: "https://www.google.com/maps?q=Piura",
-                video: "https://www.youtube.com/embed/VIDEO_ID_PIURA" // Agrega el ID del video de YouTube
+                video: "https://www.facebook.com/plugins/video.php?href=https://web.facebook.com/reel/630575102742150"
             },
             catacaos: {
                 title: "Catacaos",
                 locations: ["Frente a la capilla Virgen del Carmen"],
                 maps: "https://www.google.com/maps?q=Catacaos",
-                video: "https://www.youtube.com/embed/VIDEO_ID_CATACAOS" // Agrega el ID del video de YouTube
+                video: "https://www.facebook.com/plugins/video.php?href=https://web.facebook.com/reel/559009677286894"
             },
             ferranafe: {
                 title: "Ferrañafe",
                 locations: ["Entre prol. Santa Rosa y El puente"],
                 maps: "https://www.google.com/maps?q=Ferrañafe",
-                video: "https://www.youtube.com/embed/VIDEO_ID_FERRANAFE" // Agrega el ID del video de YouTube
+                video: "https://www.facebook.com/plugins/video.php?href=https://web.facebook.com/reel/955417999863790"
             },
             chiclayo: {
                 title: "Chiclayo",
                 locations: ["La victoria a espaldas de la municipalidad"],
                 maps: "https://www.google.com/maps?q=Chiclayo",
-                video: "https://www.youtube.com/embed/VIDEO_ID_CHICLAYO" // Agrega el ID del video de YouTube
+                video: "https://www.facebook.com/plugins/video.php?href=https://web.facebook.com/reel/617637344077665"
             }
         };
-    
+
         const modal = document.getElementById("modal");
         const modalTitle = modal.querySelector(".modal-title");
         const modalInfo = modal.querySelector(".modal-info");
         const mapsLink = modal.querySelector(".maps-link");
         const closeBtn = modal.querySelector(".close");
-        const modalVideo = modal.querySelector(".modal-video"); // Contenedor del video
-    
-        // Función para abrir el modal y cargar la información y el video
+        const modalVideo = modal.querySelector(".modal-video");
+
         const openModal = (city) => {
             const data = cityData[city];
             if (!data) return;
+
             modalTitle.textContent = data.title;
             modalInfo.innerHTML = data.locations
                 .map(location => `<li>${location}</li>`)
                 .join("");
             mapsLink.href = data.maps;
-    
-            // Cargar el video en el modal
-            modalVideo.innerHTML = `<iframe width="560" height="315" src="${data.video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-    
+
+            modalVideo.innerHTML = '';
+
+            if (data.video) {
+                let videoHTML = '';
+                if (data.video.includes('youtube.com')) {
+                    videoHTML = `<iframe width="100%" height="315" src="${data.video}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                } else if (data.video.includes('instagram.com')) {
+                    videoHTML = `<iframe width="100%" height="315" src="${data.video}" frameborder="0" scrolling="no" allowtransparency="true"></iframe>`;
+                } else if (data.video.includes('facebook.com')) {
+                    videoHTML = `<iframe src="${data.video}" width="100%" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`;
+                }
+                modalVideo.innerHTML = videoHTML;
+            }
+
             modal.style.display = "flex";
         };
-    
-        // Función para cerrar el modal y limpiar el video
+
         const closeModal = () => {
             modal.style.display = "none";
-            modalVideo.innerHTML = ''; // Limpiar el video cuando se cierra el modal
+            modalVideo.innerHTML = '';
         };
-    
-        // Evento para abrir el modal cuando se hace clic en un botón
+
         document.querySelectorAll(".btn").forEach(button => {
             button.addEventListener("click", () => {
                 const city = button.getAttribute("data-city");
                 openModal(city);
             });
         });
-    
-        // Evento para cerrar el modal cuando se hace clic en el botón de cierre
+
         closeBtn.addEventListener("click", closeModal);
-    
-        // Cerrar el modal si se hace clic fuera del contenido del modal
+
         window.addEventListener("click", (e) => {
             if (e.target === modal) {
                 closeModal();
             }
         });
     </script>
-    
+
 
 
 
@@ -445,9 +452,9 @@
             <div class="footer-section contact">
                 <h3>Contacto</h3>
                 <ul>
-                    <li>Email: contacto@crypnita.tech</li>
-                    <li>Teléfono: +51 987 654 321</li>
-                    <li>Dirección: Calle prueba ...., Chimbote, Perú</li>
+                    <li>Email: crypnita@crypnita.com</li>
+                    <li>Teléfono: +51 931 151 398</li>
+                    <li>Dirección: Chimbote, Perú</li>
                 </ul>
             </div>
             <div class="footer-section social">
